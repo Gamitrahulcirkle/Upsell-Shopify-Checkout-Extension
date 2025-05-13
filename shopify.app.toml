@@ -3,7 +3,7 @@
 client_id = "d8d9cd6d6bf94d16e17f79dc9646d3ac"
 name = "checkoutUI"
 handle = "checkoutui-40"
-application_url = "https://sum-christine-ns-prisoners.trycloudflare.com"
+application_url = "https://timely-sep-evolution-relocation.trycloudflare.com"
 embedded = true
 
 [build]
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://sum-christine-ns-prisoners.trycloudflare.com/auth/callback",
-  "https://sum-christine-ns-prisoners.trycloudflare.com/auth/shopify/callback",
-  "https://sum-christine-ns-prisoners.trycloudflare.com/api/auth/callback"
+  "https://timely-sep-evolution-relocation.trycloudflare.com/auth/callback",
+  "https://timely-sep-evolution-relocation.trycloudflare.com/auth/shopify/callback",
+  "https://timely-sep-evolution-relocation.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

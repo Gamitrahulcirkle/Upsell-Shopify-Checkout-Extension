@@ -1,47 +1,77 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/api/checkout-extensions/checkout/configuration
 
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
 api_version = "2025-04"
+
 [[extensions]]
-# Change the merchant-facing name of the extension in locales/en.default.json
-name = "t:name"
+name = "upsell"
 handle = "upsell"
-type = "checkout_ui_extension"
+type = "ui_extension"
 
+[extensions.settings]
 
-# Only 1 target can be specified for each Admin block extension
+[[extensions.settings.fields]]
+key = "upsell_variant"
+type = "variant_reference"
+name = "Upsell Product Variant"
+description = "Select the product variant to offer as an upsell."
+
+[[extensions.settings.fields]]
+key = "banner_title"
+type = "single_line_text_field"
+name = "Banner title"
+description = "Enter a title for the banner."
+
+[[extensions.settings.fields]]
+key = "banner_text"
+type = "multi_line_text_field"
+name = "Banner description"
+description = "Enter a message for the banner."
+
+[[extensions.settings.fields]]
+key = "checkbox_label"
+type = "single_line_text_field"
+name = "Checkbox label"
+description = "Label for the checkbox shown in checkout."
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+
 [[extensions.targeting]]
 module = "./src/BlockExtension.js"
-target = "checkout_ui_extension.checkout.block.render"
+target = "purchase.checkout.block.render"
 
+[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
 
-# Valid extension targets:
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+# network_access = true
 
-# Abandoned checkout detail page
-# - admin.abandoned-checkout-details.block.render
+# Loads metafields on checkout resources, including the cart,
+# products, customers, and more. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
 
-# Collection detail pages
-# - admin.collection-details.block.render
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_key"
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_other_key"
 
-# Catalog detail page
-# - admin.catalog-details.block.render
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
 
-# Company detail page
-# - admin.company-details.block.render
-# - admin.company-location.block.render
-
-# Customer detail page
-# - admin.customer-details.block.render
-
-# Draft order detail pages
-# - admin.draft-order-details.block.render
-
-# Gift card detail page
-# - admin.gift-card-details.block.render
-
-# Order detail page
-# - admin.order-details.block.render
-
-# Product detail pages
-# - admin.product-details.block.render
-
-# Product variant detail pages
-# - admin.product-variant-details.block.render
+# [extensions.settings]
+# [[extensions.settings.fields]]
+# key = "banner_title"
+# type = "single_line_text_field"
+# name = "Banner title"
+# description = "Enter a title for the banner"

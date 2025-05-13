@@ -14,7 +14,8 @@ export default extension("purchase.checkout.block.render", (root, api) => {
     Checkbox,
     {
       onChange: async (checked) => {
-        if (checked) {
+        if (checked) {   
+                 
           // ✅ Add gift product
           await api.applyCartLinesChange({
             type: "addCartLine",
